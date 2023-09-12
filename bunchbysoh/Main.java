@@ -9,6 +9,16 @@ public class Main {
 
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
+    for(int presentCapacity:presentCapacities){
+      double ratedCapacity=120.0;
+      double SOH=(presentCapacity/ratedCapacity)*100;
+      if(SOH>80 && SOH<=100)
+        counts.healthy++;
+      else if(SOH>63 && SOH<=80)
+        counts.exchange++;
+      else
+        counts.failed++;
+    }
     return counts;
   }
 
